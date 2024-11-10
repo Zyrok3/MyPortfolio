@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-Welcome to the personal portfolio website of **Felix**. This project is built using **Next.js**, **TypeScript**, and **Tailwind CSS** to showcase my work, skills, and experiences as a professional in HTL Student.
+Welcome to the personal portfolio website of [felixreder.me](https://felixreder.me/). This project is built using **Next.js**, **TypeScript**, and **Tailwind CSS** to showcase my work, skills, and experiences as a professional in HTL Student.
 
 ## Features
 
