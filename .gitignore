@@ -26,3 +26,34 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# TypeScript specific files
+*.tsbuildinfo
+
+# MacOS-specific files
+*.AppleDouble
+.LSOverride
+
+# Windows Installer files
+Thumbs.db
+
+# Next.js generated files
+/.next/
+/out/
+
+# Temporary files
+*.log
+*.bak
+
+# Coverage reports
+/coverage
+
+# Tailwind CSS
+*.css.d.ts
+
+# Yarn 2 (Berry) specific files
+/.pnp
+.pnp.js
+
+# npm package-lock
+package-lock.json
