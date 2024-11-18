@@ -48,7 +48,7 @@ const SocialLinks = () => {
                             rel="noopener noreferrer"
                             className="text-gray-400 hover:text-yellow-500 transition-transform transform hover:scale-110"
                         >
-                            <SiLeetcode size={28} />s
+                            <SiLeetcode size={28} />
                         </a>
                     </li>
                 </ul>
