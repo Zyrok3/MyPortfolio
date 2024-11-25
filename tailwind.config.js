@@ -1,11 +1,19 @@
-// tailwind.config.js
 module.exports = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
-  ],
+  darkMode: 'class', 
+  content: ['./src/**/*.{js,ts,jsx,tsx}'], 
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        background: {
+          light: '#ffffff',
+          dark: '#1a202c',
+        },
+        text: {
+          light: '#2d3748',
+          dark: '#e2e8f0',
+        },
+      },
+    },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [],
 };

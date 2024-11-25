@@ -1,9 +1,27 @@
-import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
 
-const Footer = () => (
-  <footer className="bg-gray-900 text-center py-6">
-    <p className="text-gray-500 mt-4">© 2024 Felix Reder. All Rights Reserved.</p>
-  </footer>
-);
+const Footer = () => {
+  const { language } = useContext(LanguageContext);
+
+  const content = {
+    en: {
+      copyright: "All Rights Reserved.",
+    },
+    de: {
+      copyright: "Alle Rechte vorbehalten.",
+    },
+  };
+
+  const { copyright } = content[language];
+
+  return (
+    <footer className="bg-gray-900 text-center py-6 dark:bg-gray-800">
+      <p className="text-gray-500 mt-4 dark:text-gray-400">
+        &copy; 2024 Felix Reder. {copyright}
+      </p>
+    </footer>
+  );
+};
 
 export default Footer;

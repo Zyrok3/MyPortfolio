@@ -1,14 +1,39 @@
-const About = () => {
-    return (
-      <section id="about" className="py-20 bg-gray-800">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-6 text-white">About Me</h2>
-          <p className="text-gray-400 max-w-3xl mx-auto">
-            I am a web developer with a passion for building modern, responsive, and accessible websites. My journey started with a curiosity for coding, and over the years, I have honed my skills in building user-friendly interfaces.
-          </p>
-        </div>
-      </section>
-    );
+import { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
+
+const AboutSection = () => {
+  const { language } = useContext(LanguageContext);
+
+  const content = {
+    en: {
+      heading: "About Me",
+      description:
+        "I am a web developer and IT student with a passion for programming, technology, and building modern, responsive, and accessible websites.",
+    },
+    de: {
+      heading: "Über Mich",
+      description:
+        "Ich bin ein Webentwickler und IT-Student mit einer Leidenschaft für Programmierung, Technologie und den Aufbau moderner, responsiver und zugänglicher Websites.",
+    },
   };
-  
-export default About;  
+
+  const { heading, description } = content[language];
+
+  return (
+    <section
+      id="about"
+      className="py-20 bg-gray-50 text-gray-800 dark:bg-gray-800 dark:text-gray-100"
+    >
+      <div className="container mx-auto text-left pl-40">
+        <h2 className="text-4xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+          {heading}
+        </h2>
+        <p className="text-gray-600 dark:text-gray-300 max-w-3xl mr-auto mb-10">
+          {description}
+        </p>
+      </div>
+    </section>
+  );
+};
+
+export default AboutSection;
