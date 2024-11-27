@@ -5,7 +5,7 @@ const LanguageToggle = () => {
   const { language, toggleLanguage } = useContext(LanguageContext);
 
   return (
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center space-x-3">
       <span
         className={`text-lg font-bold ${
           language === "en" ? "text-blue-500" : "text-gray-500"

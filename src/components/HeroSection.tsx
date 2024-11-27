@@ -10,15 +10,25 @@ const HeroSection = () => {
       greeting: "Hey there! I'm,",
       name: "Felix Reder",
       title: "Software Engineer.",
-      description:
-        "Constantly focused on learning and expanding my expertise, crafting ever-improving, high-performing solutions.",
+      description: (
+        <>
+          Constantly focused on learning and expanding my expertise,
+          <br />
+          crafting ever-improving, high-performing solutions.
+        </>
+      ),
     },
     de: {
-      greeting: "Hallo! Ich bin,",
+      greeting: "Hey! Ich bin,",
       name: "Felix Reder",
       title: "Software-Ingenieur.",
-      description:
-        "Stets darauf fokussiert, mein Wissen zu erweitern und hochleistungsfähige Lösungen zu entwickeln.",
+      description: (
+        <>
+          Ständig darauf fokussiert, mein Wissen zu erweitern und zu vertiefen,
+          <br />
+          um immer bessere und leistungsfähigere Lösungen zu entwickeln.
+        </>
+      ),
     },
   };
 

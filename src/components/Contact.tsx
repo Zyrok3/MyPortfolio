@@ -2,12 +2,6 @@ import { motion } from "framer-motion";
 import { useContext, useRef } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 
-declare global {
-  interface Window {
-    grecaptcha: any;
-  }
-}
-
 const Contact = () => {
   const { language } = useContext(LanguageContext);
 
@@ -45,32 +39,24 @@ const Contact = () => {
     e.preventDefault();
 
     const formData = new FormData(formRef.current!);
-    const recaptchaResponse = await getReCaptchaToken();
 
-    if (recaptchaResponse) {
-      formData.append("g-recaptcha-response", recaptchaResponse);
-
-      fetch("https://formspree.io/f/{your-id}", {
+    try {
+      const response = await fetch("https://formspree.io/f/mkgnvaja", {
         method: "POST",
         body: formData,
-      })
-        .then(() => alert(successMessage))
-        .catch(() => alert(errorMessage));
-    } else {
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      alert(successMessage);
+    } catch (error) {
+      console.error("Error:", error);
       alert(errorMessage);
     }
   };
 
-  const getReCaptchaToken = async () => {
-    if (window.grecaptcha) {
-      return new Promise<string>((resolve) => {
-        window.grecaptcha.ready(() => {
-          window.grecaptcha.execute("{your-site-key}", { action: "submit" }).then(resolve);
-        });
-      });
-    }
-    return null;
-  };
 
   return (
     <section id="contact" className="py-20 bg-gray-100 dark:bg-gray-900">

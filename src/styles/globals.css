@@ -1,20 +1,55 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* src/styles/globals.css */
 
+/* Importing a font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* Global Reset (if not using Tailwind's Preflight) */
 body {
-  @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color, #ffffff); /* Default theme background */
+  color: var(--text-color, #000000); /* Default theme text color */
 }
 
-a {
-  @apply text-blue-500 hover:underline dark:text-blue-400;
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
 }
 
-input,
-textarea {
-  @apply transition-all focus:ring-2 focus:ring-blue-500 duration-300;
+p {
+  line-height: 1.5;
+  margin: 0;
 }
 
-button {
-  @apply bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-600;
+/* Custom Utility Classes */
+.custom-shadow {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.dark-mode-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Adding smooth transitions */
+[data-theme='light'],
+[data-theme='dark'] {
+  transition: all 0.3s ease;
+}
+
+/* For all browsers */
+html, body {
+  overflow: scroll; /* Keep scrolling enabled */
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer and Edge */
+}
+
+/* For Chrome, Safari, and Opera */
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none;
 }

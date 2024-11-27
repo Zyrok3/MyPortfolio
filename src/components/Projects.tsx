@@ -1,9 +1,19 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import { motion } from "framer-motion";
+import axios from "axios";  // Import axios for fetching OG data
+
+const projects = [
+  {
+    title: "My Portfolio Website",
+    description: "Description for project 1",
+    link: "https://felixreder.me/",
+  },
+];
 
 const Projects = () => {
   const { language } = useContext(LanguageContext);
+  const [projectImages, setProjectImages] = useState([]);
 
   const content = {
     en: {
@@ -16,40 +26,46 @@ const Projects = () => {
     },
   };
 
-  const { heading, viewProject } = content[language];
+  const { heading } = content[language];
 
-  const projects = [
-    {
-      image: "/images/tempimage-600x400.svg",
-      title: language === "en" ? "Project 1" : "Projekt 1",
-      description: language === "en" ? "Description for project 1" : "Beschreibung für Projekt 1",
-      link: "http://example.com/project1",
-    },
-    {
-      image: "/images/tempimage-600x400.svg",
-      title: language === "en" ? "Project 2" : "Projekt 2",
-      description: language === "en" ? "Description for project 2" : "Beschreibung für Projekt 2",
-      link: "http://example.com/project2",
-    },
-    {
-      image: "/images/tempimage-600x400.svg",
-      title: language === "en" ? "Project 3" : "Projekt 3",
-      description: language === "en" ? "Description for project 3" : "Beschreibung für Projekt 3",
-      link: "http://example.com/project3",
-    },
-  ];
+  useEffect(() => {
+    const fetchOGImage = async () => {
+      const projectData = await Promise.all(
+        projects.map(async (project) => {
+          try {
+            const { data } = await axios.get(`https://opengraph.io/api/1.1/site/${encodeURIComponent(project.link)}?app_id=ac40479e-0dee-486a-971f-e7f76ea73003`);
+            console.log('OG Data for', project.link, data);
+            return {
+              ...project,
+              image: data?.ogImage || "/images/default-image.jpg",
+            };
+          } catch (error) {
+            console.error('Error fetching OG data for', project.link, error);
+            return {
+              ...project,
+              image: "/images/default-image.jpg",
+            };
+          }
+        })
+      );
+      setProjectImages(projectData);
+    };    
+
+    fetchOGImage();
+  }, []);
 
   return (
     <section id="projects" className="py-20 bg-gray-100 dark:bg-gray-900">
-      <div className="container mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+      <div className="container mx-auto px-28 text-center">
+        <h2 className="text-4xl font-extrabold mb-12 text-gray-800 dark:text-gray-100">
           {heading}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <motion.div
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+          {projectImages.map((project, index) => (
+            <motion.article
               key={index}
-              className="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 dark:text-gray-200"
+              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow dark:bg-gray-800 dark:text-gray-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.3 }}
@@ -57,21 +73,24 @@ const Projects = () => {
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-48 object-cover rounded-lg mb-4"
+                className="w-full h-48 object-cover"
               />
-              <h3 className="text-xl font-semibold text-blue-500 dark:text-blue-400">
-                {project.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mt-2">
-                {project.description}
-              </p>
-              <a
-                href={project.link}
-                className="mt-4 inline-block text-blue-500 hover:underline dark:text-blue-400"
-              >
-                {viewProject}
-              </a>
-            </motion.div>
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    {project.title}
+                  </a>
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                  {project.description}
+                </p>
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>

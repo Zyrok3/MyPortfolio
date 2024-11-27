@@ -16,8 +16,8 @@ const Footer = () => {
   const { copyright } = content[language];
 
   return (
-    <footer className="bg-gray-900 text-center py-6 dark:bg-gray-800">
-      <p className="text-gray-500 mt-4 dark:text-gray-400">
+    <footer className="text-center py-4 w-full bg-gray-800 dark:bg-gray-1000">
+      <p className="text-gray-500 dark:text-gray-400">
         &copy; 2024 Felix Reder. {copyright}
       </p>
     </footer>
