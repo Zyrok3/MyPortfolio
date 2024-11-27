@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { useContext } from "react";
+import Image from "next/image";
 import { LanguageContext } from "../context/LanguageContext";
-import { saveAs } from 'file-saver';
+import { saveAs } from "file-saver";
 
 const AboutSection = () => {
   const { language } = useContext(LanguageContext);
@@ -22,7 +22,7 @@ const AboutSection = () => {
   const { heading, description } = content[language];
 
   const downloadCV = () => {
-    saveAs('/path/to/your/cv.pdf', 'CV_Felix_Reder.pdf');
+    saveAs("/path/to/your/cv.pdf", "CV_Felix_Reder.pdf");
   };
 
   return (
@@ -38,14 +38,17 @@ const AboutSection = () => {
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mr-auto mb-10 text-xl">
             {description}
           </p>
-            {/* <button
+          {/* Uncomment the button below to allow downloading CV */}
+          {/* <button
             onClick={downloadCV}
             className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
-            >
+          >
             Download CV
-            </button> */}
+          </button> */}
         </div>
+
         <div className="mr-36 w-[400px] h-[400px] overflow-hidden rounded-full relative pb-20">
+          {/* Using next/image to optimize and load the image */}
           <Image
             src="/images/felix_reder.jpg"
             alt="About me image"
