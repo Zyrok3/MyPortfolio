@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { LanguageContext } from "../context/LanguageContext";
 import { saveAs } from "file-saver";
 
@@ -26,36 +26,33 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="relative">
-      <div className="container mx-auto px-4">
-        <div className="relative w-full h-[300px] md:h-[400px] mb-8">
-          <Image
-            src="/images/felix_reder.jpg"
-            alt="Felix Reder"
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
-            style={{
-              objectFit: 'cover',
-              objectPosition: 'center',
-            }}
-            className="rounded-lg"
-          />
-        </div>
-        <div className="flex-1">
-          <h2 className="text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100">
-            {heading}
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mr-auto mb-10 text-xl">
-            {description}
-          </p>  
-          {/* Uncomment the button below to allow downloading CV */}
-          {/* <button
-            onClick={downloadCV}
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
-          >
-            Download CV
-          </button> */}
+    <section id="about" className="relative py-40">
+      <div className="container mx-auto flex flex-col md:flex-row items-center pl-40">
+        <div className="flex-1 flex items-center">
+          <div>
+            <h2 className="text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+              {heading}
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-10 text-xl max-w-3xl">
+              {description}
+            </p>
+            <button
+              onClick={downloadCV}
+              className="px-6 py-3 bg-blue-600 opacity-80 text-white rounded-lg hover:bg-blue-700 transition duration-300"
+            >
+              Download CV
+            </button>
+          </div>
+          <div className="relative w-72 h-72 ml-8 md:ml-20">
+            <Image
+              src="/images/felix_reder.jpg"
+              alt="Felix Reder"
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center 30%"
+              className="rounded-full"
+            />
+          </div>
         </div>
       </div>
     </section>

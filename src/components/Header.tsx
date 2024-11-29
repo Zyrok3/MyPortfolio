@@ -19,10 +19,13 @@ const Header = () => {
 
   const { name, navItems } = content[language];
 
-  const navLinks = navItems.map((item) => ({
-    name: item,
-    href: `#${item.toLowerCase().replace(/[^a-z]/g, "")}`, // Removes invalid characters
-  }));
+  const navLinks = navItems.map((item: string) => {
+    const href = item.toLowerCase().replace(/\s+/g, '');
+    return {
+      name: item,
+      href: `#${href === 'übermich' ? 'about' : href === 'projekte' ? 'projects' : href === 'kontakt' ? 'contact' : href}`, // Map German to English
+    };
+  });
 
   const handleLogoClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault();
@@ -53,7 +56,7 @@ const Header = () => {
 
         {/* Navigation Items */}
         <ul className="flex space-x-6 text-xl">
-          {navLinks.map((link, index) => (
+          {navLinks.map((link: { name: string; href: string }, index: number) => (
             <li key={index}>
               <a
                 href={link.href}

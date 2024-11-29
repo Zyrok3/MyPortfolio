@@ -20,7 +20,7 @@ const ThemeToggle = () => {
 
     localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
-    };
+  };
 
   return (
     <div
@@ -43,9 +43,9 @@ const ThemeToggle = () => {
 
       {/* Sun Icon */}
       <svg
-        className={`absolute top-1/2 left-4 w-5 h-5 transform transition-opacity duration-300 ${
+        className={`absolute top-1/2 left-2 w-5 h-5 transform transition-opacity duration-300 ${
           theme === 'dark' ? 'opacity-0' : 'opacity-100'
-        } -translate-x-1/2 -translate-y-1/2`}
+        } -translate-y-1/2`}
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -65,16 +65,16 @@ const ThemeToggle = () => {
 
       {/* Moon Icon */}
       <svg
-        className={`absolute top-1/2 right-3 w-5 h-5 transform transition-opacity duration-300 ${
+        className={`absolute top-1/2 right-2 w-5 h-5 transform transition-opacity duration-300 ${
           theme === 'dark' ? 'opacity-100' : 'opacity-0'
-        } -translate-x-1/2 -translate-y-1/2`}
+        } -translate-y-1/2`}
         viewBox="0 0 24 24"
-        fill="none"
+        fill="black"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M21 12.79C20.25 12.96 19.47 13.05 18.68 13.05C14.82 13.05 11.63 9.87 11.63 6.01C11.63 5.22 11.72 4.44 11.89 3.69C8.74 4.16 6.31 7 6.31 10.35C6.31 14.18 9.49 17.35 13.33 17.35C16.69 17.35 19.53 14.92 20 11.79Z"
-          fill="#FFFFFF"
+          fill="black"
         />
       </svg>
     </div>
