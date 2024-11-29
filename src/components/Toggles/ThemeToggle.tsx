@@ -20,59 +20,62 @@ const ThemeToggle = () => {
 
     localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
-  };
+    };
 
   return (
     <div
       role="button"
       aria-label="Toggle Theme"
       tabIndex={0}
-      className={`theme-toggle relative w-14 h-8 p-1 cursor-pointer rounded-full ${
-        theme === 'dark' ? 'bg-gray-800' : 'bg-gray-300'
+      className={`theme-toggle relative w-16 h-9 p-1 cursor-pointer rounded-full transition-colors ${
+        theme === 'dark' ? 'bg-gray-800' : 'bg-yellow-400'
       }`}
       onClick={toggleTheme}
       onKeyDown={(e) => e.key === 'Enter' && toggleTheme()}
     >
       <div
-        className={`theme-toggle-circle absolute top-1/2 left-1 w-6 h-6 rounded-full shadow transform ${
-          theme === 'dark' ? 'bg-white translate-x-6 -translate-y-1/2' : 'bg-black -translate-y-1/2'
-        } transition-transform`}
+        className={`theme-toggle-circle absolute top-1/2 left-1 w-7 h-7 rounded-full shadow transform transition-transform ${
+          theme === 'dark'
+            ? 'bg-white translate-x-7 -translate-y-1/2'
+            : 'bg-black -translate-y-1/2'
+        }`}
       ></div>
 
       {/* Sun Icon */}
       <svg
-        className={`absolute top-1/2 left-4 w-4 h-4 transform ${
+        className={`absolute top-1/2 left-4 w-5 h-5 transform transition-opacity duration-300 ${
           theme === 'dark' ? 'opacity-0' : 'opacity-100'
-        } transition-opacity duration-300 -translate-x-1/2 -translate-y-1/2`}
+        } -translate-x-1/2 -translate-y-1/2`}
         viewBox="0 0 24 24"
-        fill={theme === 'dark' ? 'black' : 'white'}
+        fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="M12 4V2M12 22V20M4.22 4.22L2.81 2.81M19.78 19.78L21.19 21.19M2 12H4M20 12H22M4.22 19.78L2.81 21.19M19.78 4.22L21.19 2.81M18 12C18 15.3137 15.3137 18 12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12Z"
-          stroke="white"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        ></path>
+        <circle cx="12" cy="12" r="5" fill="#FFD700" />
+        <g stroke="#FFD700" strokeWidth="2" strokeLinecap="round">
+          <path d="M12 2V5" />
+          <path d="M12 19V22" />
+          <path d="M4.22 4.22L6.34 6.34" />
+          <path d="M17.66 17.66L19.78 19.78" />
+          <path d="M2 12H5" />
+          <path d="M19 12H22" />
+          <path d="M4.22 19.78L6.34 17.66" />
+          <path d="M17.66 6.34L19.78 4.22" />
+        </g>
       </svg>
 
       {/* Moon Icon */}
       <svg
-        className={`absolute top-1/2 right-0 w-4 h-4 transform ${
+        className={`absolute top-1/2 right-3 w-5 h-5 transform transition-opacity duration-300 ${
           theme === 'dark' ? 'opacity-100' : 'opacity-0'
-        } transition-opacity duration-300 -translate-x-1/2 -translate-y-1/2`}
+        } -translate-x-1/2 -translate-y-1/2`}
         viewBox="0 0 24 24"
-        fill="black"
+        fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M13 6V3M18.5 12V7M14.5 4.5H11.5M21 9.5H16M15.5548 16.8151C16.7829 16.8151 17.9493 16.5506 19 16.0754C17.6867 18.9794 14.7642 21 11.3698 21C6.74731 21 3 17.2527 3 12.6302C3 9.23576 5.02061 6.31331 7.92462 5C7.44944 6.05072 7.18492 7.21708 7.18492 8.44523C7.18492 13.0678 10.9322 16.8151 15.5548 16.8151Z"
-          stroke="black"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        ></path>
+          d="M21 12.79C20.25 12.96 19.47 13.05 18.68 13.05C14.82 13.05 11.63 9.87 11.63 6.01C11.63 5.22 11.72 4.44 11.89 3.69C8.74 4.16 6.31 7 6.31 10.35C6.31 14.18 9.49 17.35 13.33 17.35C16.69 17.35 19.53 14.92 20 11.79Z"
+          fill="#FFFFFF"
+        />
       </svg>
     </div>
   );

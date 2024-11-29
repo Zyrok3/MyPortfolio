@@ -26,18 +26,29 @@ const AboutSection = () => {
   };
 
   return (
-    <section
-      id="about"
-      className="py-20 bg-gray-50 text-gray-800 dark:bg-gray-800 dark:text-gray-100"
-    >
-      <div className="container mx-auto flex items-center text-left pl-32">
+    <section className="relative">
+      <div className="container mx-auto px-4">
+        <div className="relative w-full h-[300px] md:h-[400px] mb-8">
+          <Image
+            src="/images/felix_reder.jpg"
+            alt="Felix Reder"
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
+            style={{
+              objectFit: 'cover',
+              objectPosition: 'center',
+            }}
+            className="rounded-lg"
+          />
+        </div>
         <div className="flex-1">
           <h2 className="text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100">
             {heading}
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mr-auto mb-10 text-xl">
             {description}
-          </p>
+          </p>  
           {/* Uncomment the button below to allow downloading CV */}
           {/* <button
             onClick={downloadCV}
@@ -45,18 +56,6 @@ const AboutSection = () => {
           >
             Download CV
           </button> */}
-        </div>
-
-        <div className="mr-36 w-[400px] h-[400px] overflow-hidden rounded-full relative pb-20">
-          {/* Using next/image to optimize and load the image */}
-          <Image
-            src="/images/felix_reder.jpg"
-            alt="About me image"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="50% 25%"
-            className="absolute"
-          />
         </div>
       </div>
     </section>
