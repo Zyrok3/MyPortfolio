@@ -26,7 +26,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="pt-32 pb-40 dark:bg-gray-900 bg-gray-100 pl-44">
+    <section id="about" className="pt-32 pb-36 dark:bg-gray-900 bg-gray-100 pl-44">
       <div className="container">
         <div className="flex flex-col md:flex-row items-center">
           <div className="">
