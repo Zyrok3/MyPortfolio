@@ -43,6 +43,7 @@ const Contact = () => {
     try {
       const response = await fetch("https://formspree.io/f/mkgnvaja", {
         method: "POST",
+        headers: { "Accept": "application/json" },
         body: formData,
       });
 
@@ -51,6 +52,7 @@ const Contact = () => {
       }
 
       alert(successMessage);
+      formRef.current.reset();
     } catch (error) {
       console.error("Error:", error);
       alert(errorMessage);
