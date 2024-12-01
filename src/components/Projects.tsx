@@ -1,19 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import { motion } from "framer-motion";
-import axios from "axios";  // Import axios for fetching OG data
 
 const projects = [
   {
     title: "My Portfolio Website",
-    description: "Description for project 1",
+    description: "Showcasing personal projects, skills, and achievements",
     link: "https://felixreder.me/",
+    image: "/images/MyPortfolioWebsite_Projects.png",
+    tags: ["Next.js", "Tailwind CSS"],
   },
 ];
 
 const Projects = () => {
   const { language } = useContext(LanguageContext);
-  const [projectImages, setProjectImages] = useState([]);
 
   const content = {
     en: {
@@ -28,41 +28,15 @@ const Projects = () => {
 
   const { heading } = content[language];
 
-  useEffect(() => {
-    const fetchOGImage = async () => {
-      const projectData = await Promise.all(
-        projects.map(async (project) => {
-          try {
-            const { data } = await axios.get(`https://opengraph.io/api/1.1/site/${encodeURIComponent(project.link)}?app_id=ac40479e-0dee-486a-971f-e7f76ea73003`);
-            console.log('OG Data for', project.link, data);
-            return {
-              ...project,
-              image: data?.ogImage || "/images/default-image.jpg",
-            };
-          } catch (error) {
-            console.error('Error fetching OG data for', project.link, error);
-            return {
-              ...project,
-              image: "/images/default-image.jpg",
-            };
-          }
-        })
-      );
-      setProjectImages(projectData);
-    };    
-
-    fetchOGImage();
-  }, []);
-
   return (
-    <section id="projects" className="py-20 bg-gray-100 dark:bg-gray-900">
+    <section id="projects" className="py-32 bg-gray-100 dark:bg-gray-900">
       <div className="container mx-auto px-28 text-center">
         <h2 className="text-4xl font-extrabold mb-12 text-gray-800 dark:text-gray-100">
           {heading}
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
-          {projectImages.map((project, index) => (
+          {projects.map((project, index) => (
             <motion.article
               key={index}
               className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow dark:bg-gray-800 dark:text-gray-300"
@@ -76,9 +50,9 @@ const Projects = () => {
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">
-                <h3 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                <h3 className="text-lg font-semibold text-accent-color dark:text-blue-400 mb-2">
                   <a
-                    href={project.link}
+                    href={project.link} 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:underline"
@@ -89,6 +63,16 @@ const Projects = () => {
                 <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                   {project.description}
                 </p>
+                <div className="flex flex-wrap justify-center">
+                  {project.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-semibold mr-2 mb-2 px-2.5 py-0.5 rounded"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.article>
           ))}

@@ -2,18 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Themes */
-[data-theme='light'] {
-  --bg-color: #ffffff;
-  --text-color: #000000;
-}
-
-[data-theme='dark'] {
-  --bg-color: #000000;
-  --text-color: #ffffff;
-}
-
 /* Example of extending Tailwind in this file */
 .btn-custom {
-  @apply px-6 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 transition;
+  @apply px-6 py-2 text-white bg-[var(--accent-color)] rounded-md hover:bg-blue-700 transition;
 }

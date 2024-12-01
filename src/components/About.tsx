@@ -10,46 +10,46 @@ const AboutSection = () => {
     en: {
       heading: "About Me",
       description:
-        "I am a passionate IT student and developer with a strong enthusiasm for technology, problem-solving, and innovation. My interests lie in exploring diverse areas of IT, from programming and system optimization to emerging technologies. I strive to enhance my skills and contribute to impactful projects that drive progress and creativity.",
+        "I am an HTL student specializing in Information Technology with a strong interest in AI, neural networks, and network security. I enjoy tackling challenges, solving complex problems on platforms like LeetCode, and participating in hackathons. I strive to enhance my skills and contribute to innovative projects.",
     },
     de: {
       heading: "Über Mich",
       description:
-        "Ich bin IT-Student und Entwickler mit Leidenschaft für Technologie, Problemlösung und Innovation. Mein Ziel ist es, meine Fähigkeiten stetig zu erweitern und an kreativen Projekten mitzuarbeiten.",
+        "Ich bin HTL-Schüler mit Schwerpunkt Informationstechnologie und habe ein starkes Interesse an KI, neuronalen Netzen und Netzwerksicherheit. Ich löse gerne komplexe Probleme, etwa auf Plattformen wie LeetCode, und nehme an Hackathons teil. Mein Ziel ist es, meine Fähigkeiten zu verbessern und zu innovativen Projekten beizutragen.",
     },
   };
 
-  const { heading, description } = content[language];
+  const { heading, description } = content[language] || content.en;
 
   const downloadCV = () => {
-    saveAs("/path/to/your/cv.pdf", "CV_Felix_Reder.pdf");
+    saveAs("/Felix-Reder_Resume.pdf", "Felix-Reder_Resume.pdf");
   };
 
   return (
-    <section id="about" className="relative py-40">
-      <div className="container mx-auto flex flex-col md:flex-row items-center pl-40">
-        <div className="flex-1 flex items-center">
-          <div>
-            <h2 className="text-5xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+    <section id="about" className="pt-32 pb-40 dark:bg-gray-900 bg-gray-100">
+      <div className="container ml-52">
+        <div className="flex">
+          <div className="">
+            <h2 className="text-6xl font-bold mb-6 text-gray-800 dark:text-gray-100">
               {heading}
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-10 text-xl max-w-3xl">
+            <p className="text-gray-600 dark:text-gray-300 mb-10 text-2xl max-w-4xl">
               {description}
             </p>
             <button
               onClick={downloadCV}
-              className="px-6 py-3 bg-blue-600 opacity-80 text-white rounded-lg hover:bg-blue-700 transition duration-300"
+              className="px-6 py-3 bg-accent-color bg-blue-600 text-white rounded-lg dark:bg-blue-700 hover:bg-blue-700 transition duration-300"
             >
               Download CV
             </button>
           </div>
-          <div className="relative w-72 h-72 ml-8 md:ml-20">
+          <div className="relative w-80 h-80 ml-auto mr-auto mt-[-60px]">
             <Image
               src="/images/felix_reder.jpg"
               alt="Felix Reder"
               layout="fill"
               objectFit="cover"
-              objectPosition="center 30%"
+              objectPosition="center 20%"
               className="rounded-full"
             />
           </div>

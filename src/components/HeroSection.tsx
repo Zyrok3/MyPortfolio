@@ -9,7 +9,7 @@ const HeroSection = () => {
     en: {
       greeting: "Hey there! I'm,",
       name: "Felix Reder",
-      title: "Software Engineer.",
+      title: "HTL Student.",
       description: (
         <>
           Constantly focused on learning and expanding my expertise,
@@ -21,7 +21,7 @@ const HeroSection = () => {
     de: {
       greeting: "Hey! Ich bin,",
       name: "Felix Reder",
-      title: "Software-Ingenieur.",
+      title: "HTL Schüler.",
       description: (
         <>
           Ständig darauf fokussiert, mein Wissen zu erweitern und zu vertiefen,
@@ -35,7 +35,7 @@ const HeroSection = () => {
   const { greeting, name, title, description } = content[language];
 
   return (
-    <section className="h-screen bg-gray-50 text-gray-900 dark:bg-gray-800 dark:text-gray-100 flex flex-col justify-center items-start text-start pl-40">
+    <section className="h-screen bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 flex flex-col justify-center items-start text-start pl-40">
       <motion.p
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ const HeroSection = () => {
         transition={{ duration: 1, delay: 0.3 }}
         className="text-2xl text-gray-700 dark:text-gray-300 mt-4 inline"
       >
-        <span className="text-blue-500 dark:text-blue-400 text-4xl font-bold mr-2">
+        <span className="text-accent-color dark:text-blue-400 text-4xl font-bold mr-2">
           {title}
         </span>
         {description}

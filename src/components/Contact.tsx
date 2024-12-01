@@ -57,51 +57,52 @@ const Contact = () => {
     }
   };
 
-
   return (
-    <section id="contact" className="py-20 bg-gray-100 dark:bg-gray-900">
-      <div className="container mx-auto px-6 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-bold mb-6 text-gray-800 dark:text-gray-100"
-        >
-          {heading}
-        </motion.h2>
-        <motion.form
-          ref={formRef}
-          onSubmit={onSubmit}
-          className="max-w-xl mx-auto"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <input
-            type="email"
-            name="email"
-            placeholder={emailPlaceholder}
-            required
-            className="w-full mb-4 px-4 py-2 bg-gray-200 text-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-200 transition"
-          />
-          <textarea
-            name="message"
-            rows={4}
-            placeholder={messagePlaceholder}
-            required
-            className="w-full mb-4 px-4 py-2 bg-gray-200 text-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-200 transition"
-          />
-          <motion.button
-            type="submit"
-            className="px-6 py-3 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-105 dark:bg-blue-700 dark:hover:bg-blue-600"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
+    <div className="contact-container">
+      <section id="contact" className="pt-28 pb-44 bg-gray-100 dark:bg-gray-900">
+        <div className="container mx-auto px-6 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl font-bold mb-6 text-gray-800 dark:text-gray-100"
           >
-            {buttonText}
-          </motion.button>
-        </motion.form>
-      </div>
-    </section>
+            {heading}
+          </motion.h2>
+          <motion.form
+            ref={formRef}
+            onSubmit={onSubmit}
+            className="max-w-xl mx-auto space-y-4"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <input
+              type="email"
+              name="email"
+              placeholder={emailPlaceholder}
+              required
+              className="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-md focus:ring-2 focus:ring-accent-color dark:bg-gray-700 dark:text-gray-200"
+            />
+            <textarea
+              name="message"
+              rows={4}
+              placeholder={messagePlaceholder}
+              required
+              className="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded-md focus:ring-2 focus:ring-accent-color dark:bg-gray-700 dark:text-gray-200"
+            />
+            <motion.button
+              type="submit"
+              className="px-6 py-3 bg-accent-color text-white bg-blue-700 rounded-lg shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-105 dark:bg-blue-700 dark:hover:bg-blue-600"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {buttonText}
+            </motion.button>
+          </motion.form>
+        </div>
+      </section>
+    </div>
   );
 };
 

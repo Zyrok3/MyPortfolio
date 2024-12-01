@@ -12,7 +12,7 @@ const SocialLinks = () => {
               href="mailto:felix.reder@gmail.com"
               className="text-gray-500 hover:text-red-500 transition-transform transform hover:scale-110"
             >
-              <MdEmail size={28} />
+              <MdEmail size={32} />
             </a>
           </li>
           <li>
@@ -22,7 +22,7 @@ const SocialLinks = () => {
               rel="noopener noreferrer"
               className="text-gray-500 dark:hover:text-white hover:text-gray-800 transition-transform transform hover:scale-110"
             >
-              <FaGithub size={28} />
+              <FaGithub size={32} />
             </a>
           </li>
           <li>
@@ -32,7 +32,7 @@ const SocialLinks = () => {
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-blue-600 transition-transform transform hover:scale-110"
             >
-              <FaLinkedin size={28} />
+              <FaLinkedin size={32} />
             </a>
           </li>
           <li>
@@ -42,12 +42,12 @@ const SocialLinks = () => {
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-yellow-500 transition-transform transform hover:scale-110"
             >
-              <SiLeetcode size={28} />
+              <SiLeetcode size={32} />
             </a>
           </li>
         </ul>
 
-        <div className="h-32 w-0.5 bg-gray-600"></div>
+        <div className="h-44 w-1 bg-gray-600"></div>
       </div>
     </div>
   );
