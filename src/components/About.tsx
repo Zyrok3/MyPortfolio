@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { LanguageContext } from "../context/LanguageContext";
 import { saveAs } from "file-saver";
 
@@ -26,9 +26,9 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="pt-32 pb-40 dark:bg-gray-900 bg-gray-100">
-      <div className="container ml-52">
-        <div className="flex">
+    <section id="about" className="pt-32 pb-40 dark:bg-gray-900 bg-gray-100 pl-44">
+      <div className="container">
+        <div className="flex flex-col md:flex-row items-center">
           <div className="">
             <h2 className="text-6xl font-bold mb-6 text-gray-800 dark:text-gray-100">
               {heading}
@@ -43,13 +43,12 @@ const AboutSection = () => {
               Download CV
             </button>
           </div>
-          <div className="relative w-80 h-80 ml-auto mr-auto mt-[-60px]">
+          <div className="relative w-72 h-72 ml-auto mr-auto mt-[-60px]">
             <Image
               src="/images/felix_reder.jpg"
               alt="Felix Reder"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center 20%"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center 20%" }}
               className="rounded-full"
             />
           </div>
